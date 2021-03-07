@@ -1,0 +1,10 @@
+---
+email :
+  emailFrom : "foo@gmail.com"
+  secret : "bar"
+  listOfEmailsTo :
+    - "user1@gmail.com"
+    - "user2@gmail.com"
+listOfEndPoints:
+  - "www.pcdiga.com/graphics1"
+  - "www.pcdiga.com/graphics2"
