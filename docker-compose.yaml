@@ -23,6 +23,8 @@ services:
       - TZ=Europe/London
       - HUB_PORT_4444_TCP_ADDR=selenium_hub
       - HUB_PORT_4444_TCP_PORT=4444
+      - NODE_MAX_INSTANCES=4
+      - NODE_MAX_SESSION=4
     volumes:
       - /dev/shm:/dev/shm
     networks:
