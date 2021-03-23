@@ -6,5 +6,9 @@ email :
     - "user1@gmail.com"
     - "user2@gmail.com"
 listOfEndPoints:
-  - "www.pcdiga.com/graphics1"
-  - "www.pcdiga.com/graphics2"
+  "PcDiga" :
+    - "www.pcdiga.com/graphics1"
+    - "www.pcdiga.com/graphics2"
+  "PcComponentes" :
+    - "www.pccomponentes.com/graphics1"
+    - "www.pccomponentes.com/graphics2"

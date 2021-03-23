@@ -5,7 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class Gmail implements Host{
+public class Gmail {
 
     private final String emailAddressFrom;
     private final String secretText;
@@ -15,7 +15,7 @@ public class Gmail implements Host{
         this.secretText = secretText;
     }
 
-    public boolean send(String emailAddressTo, String body) {
+    public void send(String emailAddressTo, String subject, String body) {
         String host = "smtp.gmail.com";
 
         Properties properties = System.getProperties();
@@ -42,23 +42,21 @@ public class Gmail implements Host{
             e.printStackTrace();
         }
         try {
-            message.setSubject("Habemus Gráficas");
+            message.setSubject("Habemus Gráficas na: " + subject);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
         try {
-            message.setText(body);
+            message.setText(body, "utf-8", "html");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
 
         try {
             Transport.send(message);
-            return true;
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
 }

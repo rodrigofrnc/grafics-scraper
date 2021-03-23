@@ -1,4 +1,4 @@
-package scraper.data;
+package scraper.data.scrapers;
 
 import java.net.MalformedURLException;
 
