@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   selenium_hub:
-    image: selenium/hub:3.141.59
+    image: kynetiv/selenium-hub-pi:3.141.59-dubnium
     container_name: selenium_hub
     privileged: true
     ports:
@@ -14,7 +14,7 @@ services:
       - devops-internal
 
   chrome:
-    image: selenium/node-chrome:3.141.59
+    image: kynetiv/selenium-node-chromium-pi:3.141.59-dubnium
     privileged: true
     depends_on:
       - selenium_hub
