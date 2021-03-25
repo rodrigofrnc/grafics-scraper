@@ -2,19 +2,19 @@ version: '3.5'
 
 services:
   selenium_hub:
-    image: kynetiv/selenium-hub-pi:3.141.59-dubnium
+    image: selenium/hub:3.141.59
     container_name: selenium_hub
     privileged: true
     ports:
       - 4444:4444
     environment:
-      - GRID_TIMEOUT=120000
-      - GRID_BROWSER_TIMEOUT=120000
+      - GRID_TIMEOUT=600
+      - GRID_BROWSER_TIMEOUT=600
     networks:
       - devops-internal
 
   chrome:
-    image: kynetiv/selenium-node-chromium-pi:3.141.59-dubnium
+    image: selenium/node-chrome:3.141.59
     privileged: true
     depends_on:
       - selenium_hub

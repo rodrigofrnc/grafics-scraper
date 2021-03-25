@@ -9,6 +9,7 @@ import java.net.URL;
 
 public class PcComponentes extends AbstractSeleniumChrome {
 
+    @Override
     public boolean scrape(String endpoint) throws MalformedURLException {
         RemoteWebDriver driver = new RemoteWebDriver(new URL(HUB_URL), new ChromeOptions());
 

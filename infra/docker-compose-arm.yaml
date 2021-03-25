@@ -1,0 +1,35 @@
+version: '3.5'
+
+services:
+  selenium_hub:
+    image: kynetiv/selenium-hub-pi:3.141.59-dubnium
+    container_name: selenium_hub
+    privileged: true
+    ports:
+      - 4444:4444
+    environment:
+      - GRID_TIMEOUT=600
+      - GRID_BROWSER_TIMEOUT=600
+    networks:
+      - devops-internal
+
+  chrome:
+    image: kynetiv/selenium-node-chromium-pi:3.141.59-dubnium
+    privileged: true
+    depends_on:
+      - selenium_hub
+    environment:
+      - no_proxy=localhost
+      - TZ=Europe/London
+      - HUB_PORT_4444_TCP_ADDR=selenium_hub
+      - HUB_PORT_4444_TCP_PORT=4444
+      - NODE_MAX_INSTANCES=4
+      - NODE_MAX_SESSION=4
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - devops-internal
+
+networks:
+  devops-internal:
+    name: devops-internal
