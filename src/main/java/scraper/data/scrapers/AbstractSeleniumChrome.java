@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.List;
 
-public abstract class AbstractSeleniumChrome implements Scraper {
+public abstract class AbstractSeleniumChrome implements IScrape {
 
     protected final String HUB_URL = "http://127.0.0.1:4444/wd/hub";
 

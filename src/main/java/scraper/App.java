@@ -1,13 +1,13 @@
 package scraper;
 
-import scraper.client.Gmail;
-import scraper.client.Processor;
+import scraper.notification.Gmail;
+import scraper.notification.Client;
 import scraper.configuration.Configuration;
 import scraper.configuration.InvalidYamlException;
 import scraper.configuration.Parser;
 import scraper.data.Collector;
 import scraper.data.Filter;
-import scraper.data.scrapers.Scraper;
+import scraper.data.scrapers.IScrape;
 import scraper.data.scrapers.ScraperFactory;
 import scraper.data.scrapers.ScraperNotFoundException;
 
@@ -25,14 +25,14 @@ public class App {
         Filter filter = new Filter(new HashMap());
 
         Gmail gmail = new Gmail(configuration.getEmail().getEmailFrom(), configuration.getEmail().getSecret());
-        Processor processor = new Processor(gmail);
+        Client client = new Client(gmail);
         do {
             for (Map.Entry<String,List<String>> entry : configuration.getListOfEndPoints().entrySet()) {
-                Scraper scraper = scraperFactory.make(entry.getKey());
+                IScrape scraper = scraperFactory.make(entry.getKey());
                 Collector collector = new Collector(scraper);
                 endpointWithGraphics.addAll(filter.verifyCache(collector.collect(entry.getValue())));
                 if (endpointWithGraphics.size() > 0) {
-                    processor.process(
+                    client.process(
                             configuration.getEmail().getListOfEmailsTo(),
                             entry.getKey(),
                             endpointWithGraphics);

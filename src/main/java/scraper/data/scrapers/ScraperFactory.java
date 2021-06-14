@@ -5,8 +5,9 @@ public class ScraperFactory {
     private static final String PC_DIGA = "PcDiga";
     private static final String PC_COMPONENTES = "PcComponentes";
     private static final String INFOMESTRE = "Informestre";
+    private static final String APP_INFORMATICA = "AppInformatica";
 
-    public Scraper make(String site) throws ScraperNotFoundException {
+    public IScrape make(String site) throws ScraperNotFoundException {
         switch (site) {
             case PC_DIGA:
                 return new PcDiga();
@@ -14,6 +15,8 @@ public class ScraperFactory {
                 return new PcComponentes();
             case INFOMESTRE:
                 return new Informestre();
+            case APP_INFORMATICA:
+                return new AppInformatica();
             default:
                 throw new ScraperNotFoundException(site);
         }

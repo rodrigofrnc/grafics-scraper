@@ -1,18 +1,17 @@
 package scraper.data;
 
-import scraper.data.scrapers.Scraper;
+import scraper.data.scrapers.IScrape;
 
-import java.net.MalformedURLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class Collector {
 
-    private final Scraper scraper;
+    private final IScrape scraper;
     private final Logger logger;
 
-    public Collector(Scraper scraper) {
+    public Collector(IScrape scraper) {
         this.scraper = scraper;
         this.logger = Logger.getLogger(getClass().getName());
     }
